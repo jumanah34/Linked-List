@@ -1,0 +1,112 @@
+package li;
+
+
+import java.util.Scanner;
+
+public class Li {
+    Node head;
+public class Node {
+    int data;
+    Node next;
+Node (int d ){data =d; next=null;}
+    }
+public void AddF(int new_data) 
+	{ 
+		Node new_node = new Node(new_data); 
+		new_node.next = head; 
+		head = new_node; 
+	}
+public void AddE(int new_data) 
+	{ 
+		Node new_node = new Node(new_data); 
+		if (head == null) 
+		{ 
+			head = new Node(new_data); 
+			return; 
+		} 
+		new_node.next = null; 
+		Node last = head; 
+		while (last.next != null) 
+			last = last.next; 
+		last.next = new_node; 
+		
+	}
+public void deleteF() {
+	    if (head == null)  {
+            System.out.println("The List is empty");
+            return ; }
+            if (head.next==null){
+                head=null;
+                return;}
+		Node temp = head; 
+		head = temp.next; 
+		Node next = temp.next.next; 
+		temp.next = next; }
+	
+public void deleteE() {
+     
+        if (head == null) 
+        {System.out.println("The list is empty");
+            return ; }
+        if(head.next == null){
+            head=null;
+                return;
+        }
+        Node tem = head; 
+        while (tem.next.next != null) 
+            tem = tem.next; 
+        tem.next = null; 
+  
+    
+}
+public void print(){
+    Node n = head;
+    while (n != null){
+        System.out.print(n.data+" ");
+        n = n.next;
+    }
+}
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+         Li link = new Li();
+         System.out.println("Enter number of all element: ");
+         int n =sc.nextInt();
+         int y  ;
+         System.out.println("Enter all the element of the list ");
+         
+         for (int i=0;i<n;i++){
+            y=sc.nextInt();
+             link.AddE(y); }
+         int x,a;
+         do {
+        System.out.println(" 1. Add new node at the end of Linked List \n 2. Add new node at the beginning of Linked List \n 3. Delete a node from the end of Linked List \n 4. Delete a node from the beginning of Linked List \n 5. Print all data in the Linked List \n 6. Exit");
+        System.out.print("Enter your choice: ");
+         x= sc.nextInt(); 
+        switch (x){
+            case 1:   
+                System.out.println("Enter the number :");
+                a=sc.nextInt();
+                link.AddE(a);
+                        break;
+            case 2:     
+                System.out.println("Enter the number :");
+                a=sc.nextInt();
+                link.AddF(a);
+                        break;
+            case 3:     link.deleteE();
+                        break;
+            case 4:     link.deleteF();
+                        break;
+            case 5:     System.out.println("Display data: " );
+                        link.print();
+                        System.out.println("");
+                        break;          
+            case 6:break;    
+            default:  System.out.println("Entrance is not in range, Try again");  }
+
+         }while(x!=6);
+
+    }
+    
+}
